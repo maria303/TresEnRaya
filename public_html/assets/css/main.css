@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01-feb-2017, 21:28:29
+    Author     : Maria
+*/
+
+.casilla{
+    border: 1px solid black;
+    /*width: 15%;*/
+    height: 150px;
+}
+
+.ficha{
+    border: 1px solid black;
+    /*height: 150px;*/
+    /*width: 150px;*/
+}
+img{
+    width: 100%;
+    min-height: 100%;
+}
+
+.ficha:hover{
+    /*transform: scale(0.7);*/
+    /*transform: rotateY(130deg);*/
+}
+resultado{
+    text-align: center;
+}
+
+/*.ficha{
+    pointer-events: none;
+    opacity: 0.5;
+  background: #CCC;
+}*/

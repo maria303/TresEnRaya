@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="vendor/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <link href="vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
+        <script src="assets/js/juego.js" type="text/javascript"></script>
+        <script src="index.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="row">
+                    <div class="col-lg-offset-4 col-lg-4 ficha">
+                        <img id="X" src="assets/img/x.png" alt="" draggable="true" ondragstart="onDragStartFicha(event)"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" style="border: 1px solid black;">
+                <div class="row">
+                    <div class="col-lg-4 casilla" id='0' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='1' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='2' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 casilla" id='3' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='4' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='5' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 casilla" id='6' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='7' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='8' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="row">
+                    <div class="col-lg-offset-4 col-lg-4 ficha">
+                        <img id="O" src="assets/img/o.png" alt="" draggable="true" ondragstart="onDragStartFicha(event)"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-4 col-lg-4">
+                <h1 id="resultado"></h1>
+            </div>
+        </div>
+    </body>
+</html>
