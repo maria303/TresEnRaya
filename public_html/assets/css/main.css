@@ -7,11 +7,22 @@ and open the template in the editor.
     Created on : 01-feb-2017, 21:28:29
     Author     : Maria
 */
+body{
+    background-color: #14bdac;
+}
 
 .casilla{
-    border: 1px solid black;
-    /*width: 15%;*/
     height: 150px;
+    border-bottom: 5px solid #0da192;
+}
+.casilla:first-child{
+    border-right: 5px solid #0da192;
+    /*width: 15%;*/
+    /*height: 150px;*/
+}
+
+.casilla:last-child{
+    border-left: 5px solid #0da192;
 }
 
 .ficha{
@@ -19,6 +30,7 @@ and open the template in the editor.
     padding-top: 50%;
     /*height: 150px;*/
     /*width: 150px;*/
+    cursor: pointer;
 }
 
 .tablero{
@@ -42,6 +54,41 @@ img{
 
 #resultado{
     padding-top: 20px;
-    font-size: 30px;
+    font-size: 60px;
     text-align: center;
+    color: #545454;
+}
+
+.fichaX{
+    position: relative;
+    animation-name: movimientoX;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    /*Indica el orden de un elemento y sus descendientes*/
+    z-index: 1;
+}
+
+.fichaO{
+    position: relative;
+    animation-name: movimientoO;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes movimientoX{
+    0% {left: 0px; top: 0px;}
+    /*        25% {transform: scale(1.2);}
+            50% {transform: scale(1.4);}
+            75% {transform: scale(1.6);}*/
+    100% {left: 465px; transform: scale(2);}
+    /*    0%   {background-color:red; left:0px; top:0px;}
+        25%  {background-color:yellow; left:200px; top:0px;}
+        50%  {background-color:blue; left:200px; top:200px;}
+        75%  {background-color:green; left:0px; top:200px;}
+        100% {background-color:red; left:0px; top:0px;}*/
+}
+
+@keyframes movimientoO{
+    0% {left: 0px; top: 0px;}
+    100% {left: -465px; transform: scale(2);}
 }

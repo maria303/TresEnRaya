@@ -8,7 +8,7 @@
 var juego = new Juego();
 
 function onDragStartFicha(ev) {
-    var idFicha = obtenerIdFicha(ev.target);
+    var idFicha = getIdFichaFromElementFicha(ev.target);
     ev.dataTransfer.setData("text", idFicha);
 }
 
@@ -18,26 +18,26 @@ function onDragOverCasilla(ev) {
 
 function onDropCasilla(ev) {
     ev.preventDefault();
+    
     var idFicha = ev.dataTransfer.getData("text");
-
+    var idCasilla = getIdCasillaFromElementCasilla(ev.target);
+    var jugador = juego.comprobarTurno();
 
     if (juego.esPermitidoColocarFicha(idFicha)) {
-        if (juego.isLibreCasillaTablero(ev.target.id)) {
-//        var imagen = new Image();
-//        imagen.src = document.getElementById(idFicha).src;
-//        ev.target.appendChild(imagen);
+        if (juego.isLibreCasillaTablero(idCasilla)) {
 
-            var nodeCopy = document.getElementById(idFicha).cloneNode(true);
-            nodeCopy.id = ev.target.id;
-            ev.target.appendChild(nodeCopy);
+            var ficha = document.getElementById(idFicha).cloneNode(true);
+            ficha.id = idCasilla;
+            ev.target.appendChild(ficha);
 //alert(ev.target.id);
 //alert("return "+juego.isLibreCasillaTablero(ev.target.id));
 //        alert("1 " + juego.comprobarTurno());
 
-            juego.registrarMovimiento(ev.target.id, juego.comprobarTurno());
-            if (juego.comprobarGanador(juego.comprobarTurno())) {
+            juego.registrarMovimiento(idCasilla, jugador);
+            if (juego.comprobarGanador(jugador)) {
+                juego.mostrarGanador(jugador);
 //                document.getElementById("resultado").append("GANA JUGADOR " + juego.comprobarTurno());
-                $("#resultado").append("GANA JUGADOR " + juego.comprobarTurno());
+//                $("#resultado").append("GANA JUGADOR " + juego.comprobarTurno());
 //                $('.ficha').fadeTo('slow', .6);
 //                $('.ficha').append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
 
@@ -58,6 +58,10 @@ function onDropCasilla(ev) {
     }
 }
 
-function obtenerIdFicha(data) {
-    return data.id;
+function getIdFichaFromElementFicha(elementFicha) {
+    return elementFicha.id;
+}
+
+function getIdCasillaFromElementCasilla(elementCasilla){
+    return elementCasilla.id;
 }
