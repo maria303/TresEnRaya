@@ -15,16 +15,16 @@ function Juego() {
 }
 
 Juego.prototype.isLibreCasillaTablero = function (idCasillaTablero) {
-    
+
 //        alert(this.tablero.length);
 //    for(var i = 0; i < this.tablero.length; i++){
 //        alert(this.tablero[idCasillaTablero]);
-        if(this.tablero[idCasillaTablero] === TURNO.JUGADORX || 
-                this.tablero[idCasillaTablero] === TURNO.JUGADORO){
-            return false;
-        }else{
-            return true;
-        }
+    if (this.tablero[idCasillaTablero] === TURNO.JUGADORX ||
+            this.tablero[idCasillaTablero] === TURNO.JUGADORO) {
+        return false;
+    } else {
+        return true;
+    }
 //    }
 };
 
@@ -73,6 +73,11 @@ Juego.prototype.cambiarTurno = function () {
 
 Juego.prototype.registrarMovimiento = function (casilla, turno) {
     this.tablero[casilla] = turno;
+};
+
+Juego.prototype.nuevaPartida = function () {
+    $("#X").attr("draggable", true);
+    $("#O").attr("draggable", true);
 };
 
 var juego = new Juego();

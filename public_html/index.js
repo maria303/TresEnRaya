@@ -36,18 +36,22 @@ function onDropCasilla(ev) {
 
             juego.registrarMovimiento(ev.target.id, juego.comprobarTurno());
             if (juego.comprobarGanador(juego.comprobarTurno())) {
-                document.getElementById("resultado").append("GANA JUGADOR " + juego.comprobarTurno());
-//                $(".ficha").on("drag", function(){
-//                    return false;
-//                });
-//$('.ficha').fadeTo('slow',.6);
-//$('.ficha').append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
+//                document.getElementById("resultado").append("GANA JUGADOR " + juego.comprobarTurno());
+                $("#resultado").append("GANA JUGADOR " + juego.comprobarTurno());
+//                $('.ficha').fadeTo('slow', .6);
+//                $('.ficha').append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
+
+                $("#X").attr("draggable", false);
+                $("#O").attr("draggable", false);
+//                }
             }
 //        document.getElementById("victoria").append(juego.comprobarGanador(juego.comprobarTurno()));
-            
-                document.getElementsByClassName("ficha")[0].removeAttribute("draggable");
-                document.getElementsByClassName("ficha")[1].removeAttribute("draggable");
-
+//        
+//var fichas = document.getElementsByClassName("ficha");
+//for(var i = 0; i < fichas.length; i++){
+//    
+//}
+//$(".ficha").attr("draggable", false);
             juego.cambiarTurno();
 //            alert("2 " + juego.comprobarTurno());
         }

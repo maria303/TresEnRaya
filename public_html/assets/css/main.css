@@ -15,9 +15,14 @@ and open the template in the editor.
 }
 
 .ficha{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    padding-top: 50%;
     /*height: 150px;*/
     /*width: 150px;*/
+}
+
+.tablero{
+    padding-top: 5%;
 }
 img{
     width: 100%;
@@ -28,12 +33,15 @@ img{
     /*transform: scale(0.7);*/
     /*transform: rotateY(130deg);*/
 }
-resultado{
-    text-align: center;
-}
 
 /*.ficha{
     pointer-events: none;
     opacity: 0.5;
   background: #CCC;
 }*/
+
+#resultado{
+    padding-top: 20px;
+    font-size: 30px;
+    text-align: center;
+}
