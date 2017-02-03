@@ -57,6 +57,7 @@ img{
     font-size: 60px;
     text-align: center;
     color: #545454;
+    
 }
 
 .fichaX{
@@ -91,4 +92,9 @@ img{
 @keyframes movimientoO{
     0% {left: 0px; top: 0px;}
     100% {left: -465px; transform: scale(2);}
+}
+
+.turno{
+    border: 6px solid #038475;
+    border-radius: 25px;
 }

@@ -68,9 +68,13 @@ Juego.prototype.comprobarTurno = function () {
 
 Juego.prototype.cambiarTurno = function () {
     if (this.turno === TURNO.JUGADORX) {
+        $("#"+this.turno).removeClass("turno");
         this.turno = TURNO.JUGADORO;
+        $("#"+this.turno).addClass("turno");
     } else if (this.turno === TURNO.JUGADORO) {
+        $("#"+this.turno).removeClass("turno");
         this.turno = TURNO.JUGADORX;
+        $("#"+this.turno).addClass("turno");
     }
 };
 

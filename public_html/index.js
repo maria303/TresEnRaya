@@ -26,9 +26,16 @@ function onDropCasilla(ev) {
     if (juego.esPermitidoColocarFicha(idFicha)) {
         if (juego.isLibreCasillaTablero(idCasilla)) {
 
-            var ficha = document.getElementById(idFicha).cloneNode(true);
-            ficha.id = idCasilla;
-            ev.target.appendChild(ficha);
+var imagen = new Image();
+        imagen.src = document.getElementById(idFicha).src;
+        imagen.id = idCasilla;
+        ev.target.appendChild(imagen);
+
+//            var ficha = document.getElementById(idFicha).cloneNode(true);
+//            ficha.id = idCasilla;
+//            ev.target.appendChild(ficha);
+//            
+//            
 //alert(ev.target.id);
 //alert("return "+juego.isLibreCasillaTablero(ev.target.id));
 //        alert("1 " + juego.comprobarTurno());
