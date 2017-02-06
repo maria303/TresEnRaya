@@ -52,3 +52,7 @@ function getIdFichaFromElementFicha(elementFicha) {
 function getIdCasillaFromElementCasilla(elementCasilla) {
     return elementCasilla.id;
 }
+
+window.onload = function(){
+    $(".casilla").filter(".last").css("border-bottom", "0px");
+};

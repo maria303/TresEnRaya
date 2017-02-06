@@ -27,19 +27,13 @@ Juego.prototype.comprobarGanador = function (jugador) {
     if ((this.tablero[0] === jugador && this.tablero[1] === jugador && this.tablero[2] === jugador)
             || (this.tablero[3] === jugador && this.tablero[4] === jugador && this.tablero[5] === jugador)
             || (this.tablero[6] === jugador && this.tablero[7] === jugador && this.tablero[8] === jugador)) {
-//        return "Gana " + jugador;
-//$("#"+jugador).addClass("ficha"+jugador);
         return true;
     } else if ((this.tablero[0] === jugador && this.tablero[3] === jugador && this.tablero[6] === jugador)
             || (this.tablero[1] === jugador && this.tablero[4] === jugador && this.tablero[7] === jugador)
             || (this.tablero[2] === jugador && this.tablero[5] === jugador && this.tablero[8] === jugador)) {
-//        return "Gana " + jugador;
-//$("#"+jugador).addClass("ficha"+jugador);
         return true;
     } else if ((this.tablero[0] === jugador && this.tablero[4] === jugador && this.tablero[8] === jugador)
             || (this.tablero[2] === jugador && this.tablero[4] === jugador && this.tablero[6] === jugador)) {
-//        return "Gana " + jugador;
-//$("#"+jugador).addClass("ficha"+jugador);
         return true;
     }
 };
