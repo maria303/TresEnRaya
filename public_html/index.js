@@ -18,49 +18,29 @@ function onDragOverCasilla(ev) {
 
 function onDropCasilla(ev) {
     ev.preventDefault();
-    
+
     var idFicha = ev.dataTransfer.getData("text");
-    var idCasilla = getIdCasillaFromElementCasilla(ev.target);
+    var elementCasilla = ev.target;
+    var idCasilla = getIdCasillaFromElementCasilla(elementCasilla);
     var jugador = juego.comprobarTurno();
 
     if (juego.esPermitidoColocarFicha(idFicha)) {
         if (juego.isLibreCasillaTablero(idCasilla)) {
 
-var imagen = new Image();
-        imagen.src = document.getElementById(idFicha).src;
-        imagen.id = idCasilla;
-        ev.target.appendChild(imagen);
+            var imagen = new Image();
+            imagen.src = document.getElementById(idFicha).src;
+            imagen.id = idCasilla;
+            ev.target.appendChild(imagen);
 
 //            var ficha = document.getElementById(idFicha).cloneNode(true);
 //            ficha.id = idCasilla;
 //            ev.target.appendChild(ficha);
-//            
-//            
-//alert(ev.target.id);
-//alert("return "+juego.isLibreCasillaTablero(ev.target.id));
-//        alert("1 " + juego.comprobarTurno());
 
             juego.registrarMovimiento(idCasilla, jugador);
             if (juego.comprobarGanador(jugador)) {
                 juego.mostrarGanador(jugador);
-//                document.getElementById("resultado").append("GANA JUGADOR " + juego.comprobarTurno());
-//                $("#resultado").append("GANA JUGADOR " + juego.comprobarTurno());
-//                $('.ficha').fadeTo('slow', .6);
-//                $('.ficha').append('<div style="position: absolute;top:0;left:0;width: 100%;height:100%;z-index:2;opacity:0.4;filter: alpha(opacity = 50)"></div>');
-
-                $("#X").attr("draggable", false);
-                $("#O").attr("draggable", false);
-//                }
             }
-//        document.getElementById("victoria").append(juego.comprobarGanador(juego.comprobarTurno()));
-//        
-//var fichas = document.getElementsByClassName("ficha");
-//for(var i = 0; i < fichas.length; i++){
-//    
-//}
-//$(".ficha").attr("draggable", false);
             juego.cambiarTurno();
-//            alert("2 " + juego.comprobarTurno());
         }
     }
 }
@@ -69,6 +49,6 @@ function getIdFichaFromElementFicha(elementFicha) {
     return elementFicha.id;
 }
 
-function getIdCasillaFromElementCasilla(elementCasilla){
+function getIdCasillaFromElementCasilla(elementCasilla) {
     return elementCasilla.id;
 }

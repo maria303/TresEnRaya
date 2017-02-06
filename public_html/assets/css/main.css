@@ -57,12 +57,13 @@ img{
     font-size: 60px;
     text-align: center;
     color: #545454;
+    animation-delay: 1s;
 }
 
 .fichaX{
     position: relative;
     animation-name: movimientoX;
-    animation-duration: 4s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
     /*Indica el orden de un elemento y sus descendientes*/
     z-index: 1;
@@ -71,7 +72,7 @@ img{
 .fichaO{
     position: relative;
     animation-name: movimientoO;
-    animation-duration: 4s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
 }
 
@@ -94,6 +95,6 @@ img{
 }
 
 .turno{
-    border: 6px solid #038475;
-    border-radius: 25px;
+/*    border: 6px solid #038475;
+    border-radius: 25px;*/
 }

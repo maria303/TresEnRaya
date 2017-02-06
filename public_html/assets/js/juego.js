@@ -15,17 +15,12 @@ function Juego() {
 }
 
 Juego.prototype.isLibreCasillaTablero = function (idCasillaTablero) {
-
-//        alert(this.tablero.length);
-//    for(var i = 0; i < this.tablero.length; i++){
-//        alert(this.tablero[idCasillaTablero]);
     if (this.tablero[idCasillaTablero] === TURNO.JUGADORX ||
             this.tablero[idCasillaTablero] === TURNO.JUGADORO) {
         return false;
     } else {
         return true;
     }
-//    }
 };
 
 Juego.prototype.comprobarGanador = function (jugador) {
@@ -68,13 +63,13 @@ Juego.prototype.comprobarTurno = function () {
 
 Juego.prototype.cambiarTurno = function () {
     if (this.turno === TURNO.JUGADORX) {
-        $("#"+this.turno).removeClass("turno");
+        $("#" + this.turno).removeClass("turno");
         this.turno = TURNO.JUGADORO;
-        $("#"+this.turno).addClass("turno");
+        $("#" + this.turno).addClass("turno");
     } else if (this.turno === TURNO.JUGADORO) {
-        $("#"+this.turno).removeClass("turno");
+        $("#" + this.turno).removeClass("turno");
         this.turno = TURNO.JUGADORX;
-        $("#"+this.turno).addClass("turno");
+        $("#" + this.turno).addClass("turno");
     }
 };
 
@@ -82,15 +77,22 @@ Juego.prototype.registrarMovimiento = function (casilla, turno) {
     this.tablero[casilla] = turno;
 };
 
+Juego.prototype.moverFicha = function () {
+
+};
+
 Juego.prototype.nuevaPartida = function () {
     $("#X").attr("draggable", true);
     $("#O").attr("draggable", true);
 };
 
-Juego.prototype.mostrarGanador = function(jugador){
+Juego.prototype.mostrarGanador = function (jugador) {
+    $("#X").attr("draggable", false);
+    $("#O").attr("draggable", false);
     $(".casilla").css("opacity", "0.5");
-    $("#"+jugador).addClass("ficha"+jugador);
+    $("#" + jugador).addClass("ficha" + jugador);
     $("#resultado").append("VICTORIA");
+    $("#resultado").addClass("magictime swashIn");
 };
 
 var juego = new Juego();
