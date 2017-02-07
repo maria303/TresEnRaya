@@ -86,12 +86,6 @@ Juego.prototype.registrarMovimiento = function (fila, columna, jugador) {
     this.tablero[fila][columna] = jugador;
 };
 
-Juego.prototype.moverFicha = function (idFicha) {
-    var imagen = new Image();
-    imagen.src = document.getElementById(idFicha).src;
-    return imagen;
-};
-
 Juego.prototype.nuevaPartida = function () {
     $("#X").attr("draggable", true);
     $("#O").attr("draggable", true);

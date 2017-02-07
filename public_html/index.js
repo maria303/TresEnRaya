@@ -26,7 +26,7 @@ function onDropCasilla(ev) {
 
     if (juego.esPermitidoColocarFicha(idFicha)) {
         if (juego.isLibreCasillaTablero(fila, columna)) {
-            var imagen = juego.moverFicha(idFicha);
+            var imagen = moverFicha(idFicha);
             ev.target.appendChild(imagen);
             juego.registrarMovimiento(fila, columna, jugador);
             if (juego.comprobarGanador(jugador)) {
@@ -49,6 +49,12 @@ function getFilaCasillaFromElementCasilla(elementCasilla) {
 function getColumnaCasillaFromElementCasilla(elementCasilla) {
     return $(elementCasilla).attr("columna");
 }
+
+function moverFicha(idFicha) {
+    var imagen = new Image();
+    imagen.src = document.getElementById(idFicha).src;
+    return imagen;
+};
 
 function reset() {
     juego.reset();
