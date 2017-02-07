@@ -15,10 +15,9 @@ body{
     height: 150px;
     border-bottom: 5px solid #0da192;
 }
+
 .casilla:first-child{
     border-right: 5px solid #0da192;
-    /*width: 15%;*/
-    /*height: 150px;*/
 }
 
 .casilla:last-child{
@@ -26,34 +25,21 @@ body{
 }
 
 .ficha{
-    /*border: 1px solid black;*/
-    padding-top: 50%;
-    /*height: 150px;*/
-    /*width: 150px;*/
+    margin-top: 41%;
     cursor: pointer;
 }
 
 .tablero{
-    padding-top: 5%;
+    margin-top: 30px;;
 }
+
 img{
     width: 100%;
     min-height: 100%;
 }
 
-.ficha:hover{
-    /*transform: scale(0.7);*/
-    /*transform: rotateY(130deg);*/
-}
-
-/*.ficha{
-    pointer-events: none;
-    opacity: 0.5;
-  background: #CCC;
-}*/
-
 #resultado{
-    padding-top: 20px;
+    margin-top: 10px;
     font-size: 60px;
     text-align: center;
     color: #545454;
@@ -64,6 +50,7 @@ img{
     position: relative;
     animation-name: movimientoX;
     animation-duration: 2s;
+    /*Para que se quede en la última posición*/
     animation-fill-mode: forwards;
     /*Indica el orden de un elemento y sus descendientes*/
     z-index: 1;
@@ -78,15 +65,7 @@ img{
 
 @keyframes movimientoX{
     0% {left: 0px; top: 0px;}
-    /*        25% {transform: scale(1.2);}
-            50% {transform: scale(1.4);}
-            75% {transform: scale(1.6);}*/
     100% {left: 465px; transform: scale(2);}
-    /*    0%   {background-color:red; left:0px; top:0px;}
-        25%  {background-color:yellow; left:200px; top:0px;}
-        50%  {background-color:blue; left:200px; top:200px;}
-        75%  {background-color:green; left:0px; top:200px;}
-        100% {background-color:red; left:0px; top:0px;}*/
 }
 
 @keyframes movimientoO{
@@ -94,7 +73,18 @@ img{
     100% {left: -465px; transform: scale(2);}
 }
 
-.turno{
-/*    border: 6px solid #038475;
-    border-radius: 25px;*/
+.reset{
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid #545554;
+    padding: 4px;
+    box-sizing: border-box;
+    background-color: #0da192;
+    border-color: #098679;
+    font-size: 20px;
+    animation-delay: 2s;
+}
+
+#reiniciar{
+    text-align: center;
 }

@@ -4,19 +4,18 @@
  * and open the template in the editor.
  */
 
-
 var TURNO = {JUGADORX: "X", JUGADORO: "O"};
 
 function Juego() {
 
-    this.tablero = [];
-
     this.turno = TURNO.JUGADORX;
+
+    this.tablero = [["", "", ""], ["", "", ""], ["", "", ""]];
+
 }
 
-Juego.prototype.isLibreCasillaTablero = function (idCasillaTablero) {
-    if (this.tablero[idCasillaTablero] === TURNO.JUGADORX ||
-            this.tablero[idCasillaTablero] === TURNO.JUGADORO) {
+Juego.prototype.isLibreCasillaTablero = function (fila, columna) {
+    if (this.tablero[fila][columna] === TURNO.JUGADORX || this.tablero[fila][columna] === TURNO.JUGADORO) {
         return false;
     } else {
         return true;
@@ -24,16 +23,32 @@ Juego.prototype.isLibreCasillaTablero = function (idCasillaTablero) {
 };
 
 Juego.prototype.comprobarGanador = function (jugador) {
-    if ((this.tablero[0] === jugador && this.tablero[1] === jugador && this.tablero[2] === jugador)
-            || (this.tablero[3] === jugador && this.tablero[4] === jugador && this.tablero[5] === jugador)
-            || (this.tablero[6] === jugador && this.tablero[7] === jugador && this.tablero[8] === jugador)) {
-        return true;
-    } else if ((this.tablero[0] === jugador && this.tablero[3] === jugador && this.tablero[6] === jugador)
-            || (this.tablero[1] === jugador && this.tablero[4] === jugador && this.tablero[7] === jugador)
-            || (this.tablero[2] === jugador && this.tablero[5] === jugador && this.tablero[8] === jugador)) {
-        return true;
-    } else if ((this.tablero[0] === jugador && this.tablero[4] === jugador && this.tablero[8] === jugador)
-            || (this.tablero[2] === jugador && this.tablero[4] === jugador && this.tablero[6] === jugador)) {
+    for (i = 0; i < 3; i++) {
+        var contador = 0;
+        for (j = 0; j < 3; j++) {
+            if (this.tablero[i][j] === jugador) {
+                contador += 1;
+            }
+            if (contador === 3) {
+                return true;
+            }
+
+        }
+    }
+    for (i = 0; i < 3; i++) {
+        var contador = 0;
+        for (j = 0; j < 3; j++) {
+            if (this.tablero[j][i] === jugador) {
+                contador += 1;
+            }
+            if (contador === 3) {
+                return true;
+            }
+        }
+    }
+
+    if ((this.tablero[0][0] === jugador && this.tablero[1][1] === jugador && this.tablero[2][2] === jugador)
+            || (this.tablero[0][2] === jugador && this.tablero[1][1] === jugador && this.tablero[2][0] === jugador)) {
         return true;
     }
 };
@@ -57,22 +72,24 @@ Juego.prototype.comprobarTurno = function () {
 
 Juego.prototype.cambiarTurno = function () {
     if (this.turno === TURNO.JUGADORX) {
-        $("#" + this.turno).removeClass("turno");
+        $("#" + this.turno).removeClass("animated infinite jello");
         this.turno = TURNO.JUGADORO;
-        $("#" + this.turno).addClass("turno");
+        $("#" + this.turno).addClass("animated infinite jello");
     } else if (this.turno === TURNO.JUGADORO) {
-        $("#" + this.turno).removeClass("turno");
+        $("#" + this.turno).removeClass("animated infinite jello");
         this.turno = TURNO.JUGADORX;
-        $("#" + this.turno).addClass("turno");
+        $("#" + this.turno).addClass("animated infinite jello");
     }
 };
 
-Juego.prototype.registrarMovimiento = function (casilla, turno) {
-    this.tablero[casilla] = turno;
+Juego.prototype.registrarMovimiento = function (fila, columna, jugador) {
+    this.tablero[fila][columna] = jugador;
 };
 
-Juego.prototype.moverFicha = function () {
-
+Juego.prototype.moverFicha = function (idFicha) {
+    var imagen = new Image();
+    imagen.src = document.getElementById(idFicha).src;
+    return imagen;
 };
 
 Juego.prototype.nuevaPartida = function () {
@@ -83,10 +100,35 @@ Juego.prototype.nuevaPartida = function () {
 Juego.prototype.mostrarGanador = function (jugador) {
     $("#X").attr("draggable", false);
     $("#O").attr("draggable", false);
+    
     $(".casilla").css("opacity", "0.5");
+    
     $("#" + jugador).addClass("ficha" + jugador);
-    $("#resultado").append("VICTORIA");
-    $("#resultado").addClass("magictime swashIn");
+    $("#" + jugador).removeClass("animated infinite jello");
+    
+    $("#victoria").append("<p id='resultado' class='magictime swashIn'>VICTORIA</p>");
+    
+    $("#reiniciar").append("<input type='button' value='Reiniciar' class='reset magictime vanishIn' onclick='reset()'/>");
+};
+
+Juego.prototype.reset = function () {
+    $("#X").attr("draggable", true);
+    $("#O").attr("draggable", true);
+    
+    $(".casilla").css("opacity", "1");
+    $(".casilla").empty();
+    
+    $("#" + TURNO.JUGADORX).removeClass("ficha" + TURNO.JUGADORX);
+    $("#" + TURNO.JUGADORX).addClass("animated infinite jello");
+    $("#" + TURNO.JUGADORO).removeClass("ficha" + TURNO.JUGADORO);
+    
+    $("#victoria").empty();
+    
+    $("#reiniciar").empty();
+    
+    this.turno = TURNO.JUGADORX;
+    
+    this.tablero = [["", "", ""], ["", "", ""], ["", "", ""]];
 };
 
 var juego = new Juego();

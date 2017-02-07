@@ -9,12 +9,13 @@ and open the template in the editor.
         <title>Tres en raya</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <script src="vendor/jquery/jquery-3.1.1.min.js" type="text/javascript"></script>
         <link href="vendor/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
         <link href="vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="vendor/magic/magic.min.css" rel="stylesheet" type="text/css"/>
+        <link href="vendor/animate/animate.css" rel="stylesheet" type="text/css"/>
 
         <link href="assets/css/main.css" rel="stylesheet" type="text/css"/>
         <script src="assets/js/juego.js" type="text/javascript"></script>
@@ -25,25 +26,25 @@ and open the template in the editor.
             <div class="col-lg-4">
                 <div class="row">
                     <div class="col-lg-offset-4 col-lg-4 ficha">
-                        <img id="X" class="turno" src="assets/img/x.png" alt="" draggable="true" ondragstart="onDragStartFicha(event)"/>
+                        <img id="X" class="animated infinite jello" src="assets/img/x.png" alt="" draggable="true" ondragstart="onDragStartFicha(event)"/>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 tablero">
                 <div class="row">
-                    <div class="col-lg-4 casilla first" id='0' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
-                    <div class="col-lg-4 casilla" id='1' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
-                    <div class="col-lg-4 casilla" id='2' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla first" id='0' fila="0" columna="0" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='1' fila="0" columna="1" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='2' fila="0" columna="2" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 casilla" id='3' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
-                    <div class="col-lg-4 casilla" id='4' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
-                    <div class="col-lg-4 casilla" id='5' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='3' fila="1" columna="0" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='4' fila="1" columna="1" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla" id='5' fila="1" columna="2" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 casilla last" id='6' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
-                    <div class="col-lg-4 casilla last" id='7' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
-                    <div class="col-lg-4 casilla last" id='8' ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla last" id='6' fila="2" columna="0" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla last" id='7' fila="2" columna="1" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
+                    <div class="col-lg-4 casilla last" id='8' fila="2" columna="2" ondragover="onDragOverCasilla(event)" ondrop="onDropCasilla(event)"></div>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -55,12 +56,12 @@ and open the template in the editor.
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-offset-4 col-lg-4">
-                <p id="resultado"></p>
+            <div class="col-lg-offset-4 col-lg-4" id="victoria">
             </div>
         </div>
-        <!--<script>
-            $(".casilla").filter(".last").css("border-bottom", "0px");
-        </script>-->
+        <div class="row">
+            <div class="col-lg-offset-4 col-lg-4" id="reiniciar">
+            </div>
+        </div>
     </body>
 </html>

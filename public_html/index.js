@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 var juego = new Juego();
 
 function onDragStartFicha(ev) {
@@ -21,26 +20,20 @@ function onDropCasilla(ev) {
 
     var idFicha = ev.dataTransfer.getData("text");
     var elementCasilla = ev.target;
-    var idCasilla = getIdCasillaFromElementCasilla(elementCasilla);
+    var fila = getFilaCasillaFromElementCasilla(elementCasilla);
+    var columna = getColumnaCasillaFromElementCasilla(elementCasilla);
     var jugador = juego.comprobarTurno();
 
     if (juego.esPermitidoColocarFicha(idFicha)) {
-        if (juego.isLibreCasillaTablero(idCasilla)) {
-
-            var imagen = new Image();
-            imagen.src = document.getElementById(idFicha).src;
-            imagen.id = idCasilla;
+        if (juego.isLibreCasillaTablero(fila, columna)) {
+            var imagen = juego.moverFicha(idFicha);
             ev.target.appendChild(imagen);
-
-//            var ficha = document.getElementById(idFicha).cloneNode(true);
-//            ficha.id = idCasilla;
-//            ev.target.appendChild(ficha);
-
-            juego.registrarMovimiento(idCasilla, jugador);
+            juego.registrarMovimiento(fila, columna, jugador);
             if (juego.comprobarGanador(jugador)) {
                 juego.mostrarGanador(jugador);
+            } else {
+                juego.cambiarTurno();
             }
-            juego.cambiarTurno();
         }
     }
 }
@@ -49,10 +42,18 @@ function getIdFichaFromElementFicha(elementFicha) {
     return elementFicha.id;
 }
 
-function getIdCasillaFromElementCasilla(elementCasilla) {
-    return elementCasilla.id;
+function getFilaCasillaFromElementCasilla(elementCasilla) {
+    return $(elementCasilla).attr("fila");
 }
 
-window.onload = function(){
+function getColumnaCasillaFromElementCasilla(elementCasilla) {
+    return $(elementCasilla).attr("columna");
+}
+
+function reset() {
+    juego.reset();
+}
+
+window.onload = function () {
     $(".casilla").filter(".last").css("border-bottom", "0px");
 };
